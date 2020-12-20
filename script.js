@@ -1,17 +1,44 @@
-// TODO: when button is pushed
-//  TODO: fetch user input
-//  TODO: save into local storage (set)
-//  TODO: put all searched items from local storage in .search
-//      TODO: make sure to save to a global variable to use for the forecast
+var searches = [];
 
+// fetches all previous searches and places them on page
+init();
 
-// TODO: create variable named city that is equal to user input
-// TODO: create variable named queryURL that is equal to the open weather map URL
-//      TODO: replace the city name to the variable named city
-// TODO: use AJAX to retrieve open weather map object for today's date
-//  TODO: replace text of #city with results.data.city
-//      TODO: replace text of #todaysDate with results.data.date
-//      TODO: replace text of #todaysIcon with results.data.icon
+// when button is pushed
+$("#searchBtn").on("click", function() {
+    console.log("clicked search");
+    // fetch user input
+    var userInput = $("#input").val().trim();
+    console.log(userInput);
+    if (userInput === "") {
+        return;
+    }
+    
+    // save user input into array of searches
+    searches.push(userInput);
+    $("#input").val("");
+    
+    //  put all searched items from local storage in .search
+    storeSearches();
+    //  save into local storage (set)
+    renderSearches();
+
+    
+    // create variable named city that is equal to user input
+    var city = userInput;
+    // create variable named queryURL that is equal to the open weather map URL
+    //      replace the city name to the variable named city
+    var queryURL = `https://api.openweathermap.org/data/2.5/weather?q=${ city }&appid=09746f545308cabfeaaf4a81e5a0da1d
+    `
+    // TODO: use AJAX to retrieve open weather map object for today's date
+    $.ajax({
+        url: queryURL,
+        method: "GET"
+    }).then(function(result) {
+        console.log(result)
+    });
+    //  TODO: replace text of #city with results.data.city
+    //      TODO: replace text of #todaysDate with results.data.date
+    //      TODO: replace text of #todaysIcon with results.data.icon
 //  TODO: replace text of #temperature with results.data.temperature
 //  TODO: replace text of #humidity with results.data.humidity
 //  TODO: replace text of #windspeed with results.data.windspeed
@@ -30,3 +57,38 @@
 //    TODO: replace text of .icon with results.data.icon
 //    TODO: replace text of .temperature with results.data.temperature
 //    TODO: replace text of .humidity with resulst.data.humidity
+
+});
+
+function renderSearches() {
+    $("#searches").html("");
+
+    for (var i = 0; i < searches.length; i++)
+    {
+        var search = searches[i];
+
+        var li = $("<li>");
+        li.text(search);
+        li.attr("data-index", i);
+        li.addClass("border")
+        li.addClass("rounded")
+
+        $("#searches").prepend(li)
+        
+    }
+
+}
+
+function init () {
+    var prevSearches = JSON.parse(localStorage.getItem("searches"));
+    
+    if (prevSearches !== null) {
+        searches = prevSearches;
+    }
+
+    renderSearches();
+}
+
+function storeSearches() {
+    localStorage.setItem("searches", JSON.stringify(searches));
+}

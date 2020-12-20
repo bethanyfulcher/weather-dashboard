@@ -18,6 +18,19 @@ main {
     /* background-color: salmon; */
 }
 
+ul {
+    list-style-type: none;
+    background-color:rgb(246, 250, 252);
+}
+
+li {
+    background-color: white;
+    text-align: center;
+    padding: 10px 30px;
+    font-size: 20px;
+    color: rgb(32, 32, 32);
+}
+
 .weather {
     margin-bottom: 30px;
 }
@@ -50,8 +63,5 @@ main {
 }
 
 #searches {
-    padding: 10px 30px;
-    font-size: 20px;
-    color: rgb(32, 32, 32);
-    background-color: white;
+    padding-inline-start: 0px;
 }
