@@ -1,0 +1,57 @@
+body {
+    background-color: burlywood;
+}
+
+header {
+    color: white;
+    font-size: 50px;
+    text-align: center;
+    padding: 10px 0;
+    margin-bottom: 10px;
+    background-color:rgb(58, 58, 58)
+}
+
+main {
+    background-color: rgb(246, 250, 252);
+    padding: 30px;
+    margin: 30px;
+    /* background-color: salmon; */
+}
+
+.weather {
+    margin-bottom: 30px;
+}
+
+.today {
+    padding: 20px;
+    margin: 0 20px;
+    background-color: white;
+}
+
+.forecast {
+    color: white;
+}
+
+.forecastTitle {
+    margin: 20px
+}
+
+.forecastDay {
+    padding: 10px;
+}
+
+.dateText {
+    font-weight: bold;
+    font-size: 20px;
+}
+
+#searchBtn {
+    color: white;
+}
+
+#searches {
+    padding: 10px 30px;
+    font-size: 20px;
+    color: rgb(32, 32, 32);
+    background-color: white;
+}
