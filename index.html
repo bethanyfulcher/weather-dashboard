@@ -27,7 +27,7 @@
             <!-- Forecast -->
             <section class="col-9 weather">
                 <div class="border rounded today">
-                    <h1 class="city">City:<span id="city"></span> <span id="todaysDate"></span> <span id="todayIcon"></span></h1>
+                    <h1 class="city"><span id="city"></span> <span id="todaysDate"></span> <span id="todayIcon"></span></h1>
                     <p>Temperature: <span id="temperature"></span></p>
                     <p>Humidity: <span id="humidity"></span></p>
                     <p>Windspeed: <span id="windspeed"></span></p>
@@ -36,37 +36,7 @@
                 
                 <h2 class="forecastTitle">5-Day Forecast:</h2>
 
-                <div class="forecast row justify-content-evenly">
-                <div class="col-2 bg-primary rounded forecastDay" value="1">
-                    <p class="dateText">date<span class="date"></span></p>
-                    <p>icon<span class="icon"></span></p>
-                    <p>Temp: <span class="temperature"></span></p>
-                    <p>Humidity: <span class="humidity"></span></p>
-                </div>
-                <div class="col-2 bg-primary rounded forecastDay" value="2">
-                    <p class="dateText">date<span class="date"></span></p>
-                    <p>icon<span class="icon"></span></p>
-                    <p>Temp: <span class="temperature"></span></p>
-                    <p>Humidity: <span class="humidity"></span></p>
-                </div>
-                <div class="col-2 bg-primary rounded forecastDay" value="3">
-                    <p class="dateText">date<span class="date"></span></p>
-                    <p>icon<span class="icon"></span></p>
-                    <p>Temp: <span class="temperature"></span></p>
-                    <p>Humidity: <span class="humidity"></span></p>
-                </div>
-                <div class="col-2 bg-primary rounded forecastDay" value="4">
-                    <p class="dateText">date<span class="date"></span></p>
-                    <p>icon<span class="icon"></span></p>
-                    <p>Temp: <span class="temperature"></span></p>
-                    <p>Humidity: <span class="humidity"></span></p>
-                </div>
-                <div class="col-2 bg-primary rounded forecastDay" value="5">
-                    <p class="dateText">date<span class="date"></span></p>
-                    <p>icon<span class="icon"></span></p>
-                    <p>Temp: <span class="temperature"></span></p>
-                    <p>Humidity: <span class="humidity"></span></p>
-                </div>
+                <div class="row justify-content-evenly" id = "forecast">
             </div>
         </section>
     </main>
