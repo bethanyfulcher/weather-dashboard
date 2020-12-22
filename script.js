@@ -1,6 +1,10 @@
+// variables that need to be global
 var searches = [];
 var lon;
 var lat;
+// fetch time object from luxon
+var time = luxon.DateTime.local();
+console.log(time);
 // fetches all previous searches and places them on page
 init();
 
@@ -53,14 +57,21 @@ $("#searchBtn").on("click", function() {
             console.log(response);
 
             //      TODO: replace text of #todaysDate with results.data.date
-            //      TODO: replace text of #todaysIcon with results.data.icon
-            $("#icon")
-            //  TODO: replace text of #temperature with results.data.temperature
-            $("#temperature").text(response.current.temp);
+
+            var zone = luxon.DateTime.local().setZone(response.timezone)
+            console.log(zone)
+
+            $("#todaysDate").text(`(${zone.month}/${zone.day}/${zone.year})`)
+            
+            //       replace attribute of #todaysIcon with results.data.icon
+            $("#todayIcon").attr("src", `http://openweathermap.org/img/wn/${response.current.weather[0].icon}.png`);
+
+            //  replace text of #temperature with results.data.temperature
+            $("#temperature").text(response.current.temp + " °F");
             //  replace text of #humidity with results.data.humidity
-            $("#humidity").text(response.current.humidity);
+            $("#humidity").text(response.current.humidity + "%");
             //  replace text of #windspeed with results.data.windspeed
-            $("#windspeed").text(response.current.wind_speed);
+            $("#windspeed").text(response.current.wind_speed + " MPH");
             //  replace text of #UVindex with results.data.uvindex
             var UVindex = response.current.uvi;
 
@@ -83,7 +94,7 @@ $("#searchBtn").on("click", function() {
                 $("UVindex").css("background-color", "yellow");
             }
             
-            //      TODO: the for loop should loop 5 times, each time producing the next day and placing the data into a different slot in the forecast area
+            //      the for loop should loop 5 times, each time producing the next day and placing the data into a different slot in the forecast area
             $("#forecast").text("");
             for (var i = 1; i < 6; i++)
             {
@@ -91,25 +102,28 @@ $("#searchBtn").on("click", function() {
                 div.addClass("col-2 bg-primary rounded justify-content-evenly");
                 $("#forecast").append(div);
                 
-                //    TODO: replace text of .date with results.data.date
+                //    replace text of .date with results.data.date
+
+                var nextDay = zone.plus({hours: 24*i})
+
                 var date = $("<p>");
-                date.text("date");
+                date.text(`${nextDay.month}/${nextDay.day}/${nextDay.year}`);
                 date.addClass("dateText")
                 div.append(date);
                 
-                //    TODO: replace text of .icon with results.data.icon
+                //    replace text of .icon with results.data.icon
                 var icon = $("<img>");
                 icon.attr("src", `http://openweathermap.org/img/wn/${response.daily[i].weather[0].icon}.png`);
                 div.append(icon);
                 
-                //    TODO: replace text of .temperature with results.data.temperature
+                //    replace text of .temperature with results.data.temperature
                 var temp = $("<p>");
-                temp.text(response.daily[i].temp.day);
+                temp.text("Temp: " + response.daily[i].temp.day + " °F");
                 div.append(temp);
 
-                //    TODO: replace text of .humidity with resulst.data.humidity
+                //    replace text of .humidity with resulst.data.humidity
                 var humidity = $("<p>");
-                humidity.text(response.daily[i].humidity);
+                humidity.text("Humidity: " + response.daily[i].humidity + "%");
                 div.append(humidity);
             }
 

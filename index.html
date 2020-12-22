@@ -27,7 +27,8 @@
             <!-- Forecast -->
             <section class="col-9 weather">
                 <div class="border rounded today">
-                    <h1 class="city"><span id="city"></span> <span id="todaysDate"></span> <span id="todayIcon"></span></h1>
+                        <h1 class="city"><span id="city"></span> <span id="todaysDate"></span></h1>
+                        <img id="todayIcon"></img>
                     <p>Temperature: <span id="temperature"></span></p>
                     <p>Humidity: <span id="humidity"></span></p>
                     <p>Windspeed: <span id="windspeed"></span></p>
@@ -40,7 +41,9 @@
             </div>
         </section>
     </main>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/luxon/1.25.0/luxon.min.js"></script>
     <script src="script.js"></script>
 </body>
 </html>
