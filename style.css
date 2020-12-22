@@ -23,12 +23,18 @@ ul {
     background-color:rgb(246, 250, 252);
 }
 
-li {
+.prevSearchBtn {
     background-color: white;
     text-align: center;
     padding: 10px 30px;
     font-size: 20px;
     color: rgb(32, 32, 32);
+    display: block;
+    width: 100%;
+}
+
+h2 {
+    display: none;
 }
 
 .weather {
@@ -51,7 +57,7 @@ li {
 
 .dateText {
     font-weight: bold;
-    font-size: 20px;
+    font-size: 25px;
 }
 
 #forecast {
