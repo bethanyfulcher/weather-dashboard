@@ -177,9 +177,11 @@ function init() {
 
     if (prevSearches !== null) {
         searches = prevSearches;
+        userInput = searches[searches.length - 1]
     }
 
     renderSearches();
+    getWeather()
 }
 
 function storeSearches() {
